@@ -1,0 +1,21 @@
+.FAQ {
+    padding: 70px 0;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+
+.subtitle {
+    font-size: 30px;
+    line-height: 1;
+}
+
+.accordion-list > span {
+    display: inline-block;
+    margin-bottom: 10px;
+    opacity: 0.5;
+}
+
+.accordion {
+    margin-bottom: 40px;
+}
+

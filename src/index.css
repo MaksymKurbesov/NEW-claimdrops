@@ -1,0 +1,58 @@
+@font-face {
+    font-family: "Inter";
+    font-weight: 300;
+    src:
+            url("/Inter-Light.woff2") format("truetype");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-weight: 400;
+    src:
+            url("/Inter-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Inter";
+    font-weight: 500;
+    src:
+            url("/Inter-Medium.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Inter";
+    font-weight: 600;
+    src:
+            url("/Inter-Bold.woff2") format("woff2");
+}
+
+:root {
+    --main-orange: #ff9400;
+    --light-orange: rgba(255, 148, 0, 0.6);
+    --dark-orange: rgb(222, 129, 0);
+    --card-shadow:  rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.03) 0px 0px 15px 0px, rgba(0, 0, 0, 0.08) 0px 2px 30px 0px, rgba(0, 0, 0, 0.3) 0px 0px 1px 0px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+
+.container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.little-title {
+    font-size: 16px;
+    color: var(--main-orange);
+    margin-bottom: 25px;
+}
