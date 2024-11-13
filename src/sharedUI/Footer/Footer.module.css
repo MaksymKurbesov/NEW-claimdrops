@@ -18,7 +18,8 @@
 }
 
 .subtitle {
-    width: 54%;
+    max-width: 300px;
+    width: 100%;
     line-height: 1.4;
     font-weight: 400;
     font-size: 14px;
@@ -28,6 +29,7 @@
 .right-column {
     display: flex;
     gap: 100px;
+    margin-left: auto;
 }
 
 .right-column ul {
@@ -56,13 +58,40 @@
     border-top: 1px solid rgba(0, 0, 0, 0.15);
     display: flex;
     align-items: center;
-    gap: 5px;
 }
 
 .bottom-footer p {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     opacity: 0.7;
+    line-height: 1.1;
 }
 
 .bottom-footer img {
     margin-left: auto;
+}
+
+@media screen and (max-width: 800px) {
+    .footer > div {
+        flex-direction: column;
+    }
+
+    .left-column {
+        margin-bottom: 20px;
+    }
+
+    .right-column {
+        margin-left: initial;
+
+    }
+
+    .bottom-footer {
+        flex-direction: column-reverse;
+    }
+
+    .bottom-footer img {
+        margin-left: initial;
+        margin-bottom: 10px;
+    }
 }

@@ -21,8 +21,15 @@
 }
 
 .feedback-list {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 15px;
+    padding: 15px;
+}
+
+.testimonials > div > button {
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .feedback-list li {
@@ -64,4 +71,30 @@
     color: gray;
     font-weight: 700;
     opacity: 0.6;
+}
+
+@media screen and (max-width: 800px) {
+    .testimonials {
+        margin-bottom: 0;
+    }
+
+    .feedback-list {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .subtitle {
+        margin-bottom: 30px;
+    }
+
+}
+
+
+@media screen and (max-width: 550px) {
+    .feedback-list {
+        grid-template-columns: 1fr;
+    }
+
+    .subtitle {
+        margin-bottom: 35px;
+    }
 }

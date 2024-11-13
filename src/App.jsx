@@ -1,14 +1,17 @@
 import "@mantine/core/styles.css";
-import { useState } from "react";
+import "@mantine/carousel/styles.css";
 import "./App.css";
-import Index from "./pages/Index/Index.jsx";
-import { MantineProvider } from "@mantine/core";
+import { Outlet } from "react-router-dom";
+import Header from "./sharedUI/Header/Header.jsx";
+import Footer from "./sharedUI/Footer/Footer.jsx";
 
 function App() {
   return (
-    <MantineProvider>
-      <Index />
-    </MantineProvider>
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
   );
 }
 

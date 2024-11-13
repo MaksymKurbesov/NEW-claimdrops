@@ -3,8 +3,9 @@
     height: 64px;
     position: fixed;
     top: 0;
-    width: 96vw;
-    background: none;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
     z-index: 5;
     color: white;
     transition: 0.35s ease all;
@@ -16,6 +17,10 @@
     height: 100%;
 }
 
+
+.white-header {
+    color: black;
+}
 
 .logo {
     transform: rotateZ(45deg);
@@ -32,14 +37,16 @@
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(6px);
     color: black;
-    width: 100%;
+
     box-shadow: var(--card-shadow);
 }
 
-.scrolled-header > div > img {
-    filter:  hue-rotate(135deg) saturate(200%) brightness(1);
+
+
+.scrolled-header > div img, .white-header > div img {
+    filter:  hue-rotate(165deg) saturate(1000%) brightness(1.7);
 }
 
-.scrolled-header .log-in {
+.scrolled-header .log-in, .white-header .log-in {
     color: var(--main-orange);
 }

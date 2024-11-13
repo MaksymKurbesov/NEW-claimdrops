@@ -1,14 +1,19 @@
 import styles from "./Header.module.css";
 import Logo from "../../assets/logo.webp";
 import Logo2 from "../../assets/logo2.webp";
-import { Button, Flex } from "@mantine/core";
+import { Button, Flex, Modal, Portal } from "@mantine/core";
 import { IconBrandTelegram } from "@tabler/icons-react";
 import useWindowSize from "../../hooks/useWindowSize";
 import { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { useDisclosure } from "@mantine/hooks";
+import { LoginButton } from "@telegram-auth/react";
 
 const Header = () => {
-  const windowSize = useWindowSize();
   const [scrollY, setScrollY] = useState(0);
+  const location = useLocation();
+  const isIndexPage = location.pathname === "/";
+  const [opened, { open, close }] = useDisclosure(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,27 +29,28 @@ const Header = () => {
 
   return (
     <header
-      className={`${styles["header"]} ${scrollY >= 100 ? styles["scrolled-header"] : ""}`}
+      className={`${styles["header"]} ${!isIndexPage ? styles["white-header"] : ""} ${scrollY >= 100 ? styles["scrolled-header"] : ""}`}
     >
-      {/*<div className={"container"}>*/}
       <Flex justify={"space-between"} align={"center"}>
-        <img
-          className={styles["logo"]}
-          src={scrollY >= 100 ? Logo2 : Logo}
-          alt={""}
-          width={55}
-          height={55}
-        />
+        <NavLink to={"/"}>
+          <img
+            className={styles["logo"]}
+            src={scrollY >= 100 || !isIndexPage ? Logo2 : Logo}
+            alt={""}
+            width={45}
+            height={45}
+          />
+        </NavLink>
         <nav className={styles["nav"]}>
           <ul>
             <li>
-              <a>Airdrops</a>
+              <NavLink to={"/airdrops"}>Airdrops</NavLink>
             </li>
             <li>
               <a>Pricing</a>
             </li>
             <li>
-              <a>Earn</a>
+              <NavLink to={"/earn"}>Earn</NavLink>
             </li>
           </ul>
         </nav>
@@ -54,11 +60,23 @@ const Header = () => {
           variant="subtle"
           radius="md"
           className={styles["log-in"]}
+          onClick={open}
         >
           Log in
         </Button>
       </Flex>
-      {/*</div>*/}
+
+      <Portal>
+        <Modal opened={opened} onClose={close} title="Authentication">
+          <LoginButton
+            botUsername={"dropscanner_bot"}
+            onAuthCallback={(data) => {
+              console.log(data);
+              // call your backend here to validate the data and sign in the user
+            }}
+          />
+        </Modal>
+      </Portal>
     </header>
   );
 };

@@ -2,6 +2,7 @@
     padding: 70px 0;
     display: grid;
     grid-template-columns: 300px 1fr;
+    gap: 40px;
 }
 
 .subtitle {
@@ -19,3 +20,10 @@
     margin-bottom: 40px;
 }
 
+@media screen and (max-width: 800px) {
+    .FAQ {
+        grid-template-columns: 1fr;
+        padding: 0;
+        padding-top: 30px;
+    }
+}

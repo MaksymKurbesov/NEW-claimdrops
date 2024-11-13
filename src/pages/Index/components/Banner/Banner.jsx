@@ -22,6 +22,14 @@ const Banner = () => {
           </Button>
         </div>
         <img src={PhoneImage} alt={""} width={350} />
+        <Button
+          color={"#FF9400"}
+          size={"md"}
+          radius={"md"}
+          className={styles["start-finding-mobile-button"]}
+        >
+          Start Finding Airdrops
+        </Button>
       </div>
     </div>
   );

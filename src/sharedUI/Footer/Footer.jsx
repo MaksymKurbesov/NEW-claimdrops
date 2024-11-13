@@ -31,8 +31,8 @@ const Footer = () => {
       </div>
       <div className={"container"}>
         <div className={styles["bottom-footer"]}>
-          <IconSpy size={16} />
           <p>
+            <IconSpy size={20} />
             Privacy first! We never share data with third parties. © 2024
             Drops. All rights reserved.
           </p>

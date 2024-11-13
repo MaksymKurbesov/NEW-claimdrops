@@ -30,6 +30,7 @@
     font-weight: 700;
     margin-bottom: 45px;
     opacity: 0.8;
+    line-height: 1.1;
 }
 
 .top-row img, .bottom-row img {
@@ -63,4 +64,35 @@
 
 .description ul li svg {
     /*flex-basis: 20px;*/
+}
+
+@media screen and (max-width: 900px) {
+    .we-made-it-simple {
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .description h4 {
+        margin-bottom: 20px;
+    }
+
+    .top-row {
+        grid-template-columns: 1fr;
+        margin-bottom: 20px;
+    }
+
+    .top-row .description {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .bottom-row {
+        grid-template-columns: 1fr;
+    }
+
+    .bottom-row .description {
+        order: 0;
+        padding-left: 0;
+        margin-bottom: 20px;
+    }
 }

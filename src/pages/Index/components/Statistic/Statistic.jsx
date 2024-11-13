@@ -30,9 +30,11 @@ const Statistic = () => {
       </ul>
       <div className={styles["as-seen"]}>
         <p>as seen on</p>
-        <img src={HackerNewsImg} alt={""} width={160} />
-        <img src={DappRadarImg} alt={""} width={160} />
-        <img src={ProductHuntImg} alt={""} width={160} />
+        <div>
+          <img src={HackerNewsImg} alt={""} width={160} />
+          <img src={DappRadarImg} alt={""} width={160} />
+          <img src={ProductHuntImg} alt={""} width={160} />
+        </div>
       </div>
       <div className={styles["check-text-wrapper"]}>
         <p className={styles["check-text"]}>

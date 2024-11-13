@@ -167,10 +167,7 @@ const FAQ = () => {
     <div className={styles["FAQ"]}>
       <div>
         <h3 className={"little-title"}>Frequently asked questions</h3>
-        <p className={styles["subtitle"]}>
-          Everything you need <br />
-          to know
-        </p>
+        <p className={styles["subtitle"]}>Everything you need to know</p>
       </div>
       <div className={styles["accordion-list"]}>
         <span>Airdrops</span>

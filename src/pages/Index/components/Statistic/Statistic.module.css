@@ -26,6 +26,8 @@
 .statistic-list li p {
     font-weight: 500;
     color: var(--dark-orange);
+    text-align: center;
+    line-height: 1;
 }
 
 .as-seen {
@@ -69,4 +71,38 @@
     align-items: center;
     gap: 3px;
     color: gray;
+}
+
+@media screen and (max-width: 800px) {
+    .statistic-list > div {
+        padding: 10px;
+    }
+
+    .as-seen {
+        flex-direction: column;
+    }
+
+    .as-seen div {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .statistic-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .statistic-list > div {
+        width: 200px
+    }
+
+    .check-text-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
 }

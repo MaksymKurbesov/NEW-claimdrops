@@ -8,7 +8,7 @@ import {
 } from "@tabler/icons-react";
 
 const Pricing = () => {
-  const [value, setValue] = useState("monthly");
+  const [value, setValue] = useState("yearly");
 
   return (
     <div className={styles["pricing"]}>
@@ -73,10 +73,23 @@ const Pricing = () => {
           <Card radius={"lg"}>
             <h2>Whale</h2>
             <p className={styles["price"]}>
-              <sup>$</sup>0.48<sub>/ address / mo</sub>
+              <sup>$</sup>
+              {value === "monthly" ? "0.48" : "0.36"}
+              <sub>/ address / mo</sub>
             </p>
-            <span className={styles["billed"]}>$24 billed monthly</span>
-            <p className={styles["watch-1-address"]}>Watch 50 address</p>
+            <span className={styles["billed"]}>
+              {value === "monthly" ? (
+                "$24 billed monthly"
+              ) : (
+                <span>
+                  <span className={styles["line-through"]}>$288</span>{" "}
+                  <span className="shrink-0">
+                    <span className="notranslate">$215 </span>billed yearly
+                  </span>
+                </span>
+              )}
+            </span>
+            <p className={styles["watch-1-address"]}>Watch 50 addresses</p>
             <Button
               className={styles["get-started-button"]}
               color={"#FF9400"}
@@ -85,7 +98,9 @@ const Pricing = () => {
             >
               Get Started
             </Button>
-            <span className={styles["plan-includes"]}>Plan includes:</span>
+            <span className={styles["plan-includes"]}>
+              All E-beggar features plus:
+            </span>
             <ul className={styles["includes-list"]}>
               <li>
                 <IconCircleCheck color={"#FF9400"} />
@@ -111,10 +126,24 @@ const Pricing = () => {
           <Card radius={"lg"}>
             <h2>Pleb</h2>
             <p className={styles["price"]}>
-              <sup>$</sup>0<sub>/ address / mo</sub>
+              <sup>$</sup>
+              {value === "monthly" ? "1.40" : "1.15"}
+              <sub>/ address / mo</sub>
             </p>
-            <span className={styles["billed"]}>$7 billed monthly</span>
-            <p className={styles["watch-1-address"]}>Watch 1 address</p>
+            <span className={styles["billed"]}>
+              {" "}
+              {value === "monthly" ? (
+                "$7 billed monthly"
+              ) : (
+                <span>
+                  <span className={styles["line-through"]}>$84</span>{" "}
+                  <span className="shrink-0">
+                    <span className="notranslate">$69 </span>billed yearly
+                  </span>
+                </span>
+              )}
+            </span>
+            <p className={styles["watch-1-address"]}>Watch 5 addresses</p>
             <Button
               className={styles["get-started-button"]}
               color={"#FF9400"}
@@ -123,7 +152,9 @@ const Pricing = () => {
             >
               Get Started
             </Button>
-            <span className={styles["plan-includes"]}>Plan includes:</span>
+            <span className={styles["plan-includes"]}>
+              All E-beggar features plus:
+            </span>
             <ul className={styles["includes-list"]}>
               <li>
                 <IconCircleCheck color={"#FF9400"} />
