@@ -9,6 +9,7 @@ import CosmosIcon from "../../assets/crypto-icons/cosmos.webp";
 import BitcoinIcon from "../../assets/crypto-icons/bitcoin.webp";
 import ExpiringBanner from "../../sharedUI/ExpiringBanner/ExpiringBanner.jsx";
 import { Accordion } from "@mantine/core";
+import { ScrollRestoration } from "react-router-dom";
 
 const NETWORKS = [
   { icon: EthereumIcon, name: "Ethereum & L2", airdrops: 55 },
@@ -103,6 +104,7 @@ const Airdrops = () => {
         </p>
       </div>
       <SponsorCarousel />
+      <ScrollRestoration />
     </div>
   );
 };

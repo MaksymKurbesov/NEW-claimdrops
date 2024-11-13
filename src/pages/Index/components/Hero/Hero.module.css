@@ -30,10 +30,45 @@
     line-height: 1.2;
 }
 
-.enter-wallet-input {
+.input-wrapper {
     width: 100%;
     max-width: 600px;
-    margin-bottom: 20px !important;
+    position: relative;
+}
+
+.enter-wallet-input {
+    margin-bottom: 40px !important;
+}
+
+.enter-wallet-input input {
+    border: none;
+    font: inherit;
+}
+
+.error-input input {
+    background-color: rgb(255, 179, 179) !important;
+    color: rgb(243, 18, 96);
+    font: inherit;
+    border: none;
+}
+
+/*.error-input {*/
+/*    background-color: #ff7878 !important;*/
+/*}*/
+
+.error-message {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 50px !important;
+    /*margin-bottom: 50px !important;*/
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(255, 64, 64);
+    text-shadow: var(--text-shadow);
+    position: absolute;
+    left: 50%;
+    bottom: -40px;
+    transform: translateX(-50%);
 }
 
 .check-address-button {

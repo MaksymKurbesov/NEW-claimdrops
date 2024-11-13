@@ -33,6 +33,10 @@
     font-size: 14px;
 }
 
+.nav ul li a {
+    border-bottom: 2px solid transparent;
+}
+
 .scrolled-header {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(6px);
@@ -41,12 +45,16 @@
     box-shadow: var(--card-shadow);
 }
 
-
-
 .scrolled-header > div img, .white-header > div img {
     filter:  hue-rotate(165deg) saturate(1000%) brightness(1.7);
 }
 
 .scrolled-header .log-in, .white-header .log-in {
+    color: var(--main-orange);
+}
+
+.active {
+    transition: 0.35s ease all;
+    border-bottom: 2px solid var(--main-orange) !important;
     color: var(--main-orange);
 }

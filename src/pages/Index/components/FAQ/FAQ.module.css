@@ -5,9 +5,14 @@
     gap: 40px;
 }
 
+
 .subtitle {
     font-size: 30px;
     line-height: 1;
+}
+
+.description {
+    font-weight: 400;
 }
 
 .accordion-list > span {

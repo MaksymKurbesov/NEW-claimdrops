@@ -5,7 +5,7 @@ import { Button, Flex, Modal, Portal } from "@mantine/core";
 import { IconBrandTelegram } from "@tabler/icons-react";
 import useWindowSize from "../../hooks/useWindowSize";
 import { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useDisclosure } from "@mantine/hooks";
 import { LoginButton } from "@telegram-auth/react";
 
@@ -44,13 +44,31 @@ const Header = () => {
         <nav className={styles["nav"]}>
           <ul>
             <li>
-              <NavLink to={"/airdrops"}>Airdrops</NavLink>
+              <NavLink
+                to={"/airdrops"}
+                className={({ isActive }) => (isActive ? styles["active"] : "")}
+              >
+                Airdrops
+              </NavLink>
             </li>
             <li>
-              <a>Pricing</a>
+              <Link
+                to={"/#pricing"}
+                onClick={() => {
+                  document.getElementById("pricing")?.scrollIntoView();
+                }}
+                className={({ isActive }) => (isActive ? styles["active"] : "")}
+              >
+                Pricing
+              </Link>
             </li>
             <li>
-              <NavLink to={"/earn"}>Earn</NavLink>
+              <NavLink
+                className={({ isActive }) => (isActive ? styles["active"] : "")}
+                to={"/earn"}
+              >
+                Earn
+              </NavLink>
             </li>
           </ul>
         </nav>

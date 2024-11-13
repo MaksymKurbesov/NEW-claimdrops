@@ -9,6 +9,7 @@ import Pricing from "./components/Pricing/Pricing.jsx";
 import FAQ from "./components/FAQ/FAQ.jsx";
 import ExpiringBanner from "../../sharedUI/ExpiringBanner/ExpiringBanner.jsx";
 import Footer from "../../sharedUI/Footer/Footer.jsx";
+import { ScrollRestoration } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -31,6 +32,7 @@ const Index = () => {
         </div>
       </div>
       {/*<Footer />*/}
+      <ScrollRestoration />
     </div>
   );
 };

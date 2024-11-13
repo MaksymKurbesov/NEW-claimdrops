@@ -37,9 +37,10 @@ const WeMadeItSimple = () => {
             <li>
               <IconShieldExclamation color={"#FF9400"} />
               <p>
-                <span>No need to connect a wallet.</span> Just enter any crypto
-                wallet address from the supported networks. Wallet connection is
-                never required.
+                <span>One time connect wallet.</span> Simply enter any crypto
+                wallet address from the supported networks for verification. To
+                enable access to the full set of features, a one-time wallet
+                connection is required.
               </p>
             </li>
           </ul>

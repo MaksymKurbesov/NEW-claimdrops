@@ -9,6 +9,7 @@ import {
   IconGift,
 } from "@tabler/icons-react";
 import SponsorCarousel from "../../sharedUI/SponsorCarousel/Carousel.jsx";
+import { ScrollRestoration } from "react-router-dom";
 
 const Earn = () => {
   return (
@@ -64,6 +65,7 @@ const Earn = () => {
           </li>
         </ul>
       </div>
+      <ScrollRestoration />
       <SponsorCarousel />
     </div>
   );

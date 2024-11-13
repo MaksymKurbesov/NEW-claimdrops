@@ -11,7 +11,7 @@ const Pricing = () => {
   const [value, setValue] = useState("yearly");
 
   return (
-    <div className={styles["pricing"]}>
+    <div className={styles["pricing"]} id={"pricing"}>
       <div className={"container"}>
         <h3 className={"little-title"}>Pricing</h3>
         <h2>
