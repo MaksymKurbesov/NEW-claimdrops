@@ -9,14 +9,21 @@ import { Button, Input } from "@mantine/core";
 import { IconArrowRight, IconStarFilled } from "@tabler/icons-react";
 import { useState } from "react";
 import { identifyCryptoWallet } from "../../../../helpers/helpers.js";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const [isError, setIsError] = useState(false);
-  const [walletValue, setWalletValue] = useState("");
+  const [walletNumber, setWalletNumber] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
-    const isCryptoWallet = identifyCryptoWallet(walletValue);
-    if (!isCryptoWallet) setIsError(true);
+    const isCryptoWallet = identifyCryptoWallet(walletNumber);
+    if (!isCryptoWallet) {
+      setIsError(true);
+      return;
+    }
+
+    navigate(`/address/${walletNumber}`);
   };
 
   return (
@@ -33,13 +40,14 @@ const Hero = () => {
             radius="md"
             placeholder="Enter wallet address or ENS"
             onChange={(e) => {
-              setWalletValue(e.target.value);
+              setWalletNumber(e.target.value);
               setIsError(false);
             }}
           />
           {isError && (
             <p className={styles["error-message"]}>
-              Invalid address. <a>See supported networks</a>
+              Invalid address.{" "}
+              <NavLink to={"/airdrops"}>See supported networks</NavLink>
             </p>
           )}
         </div>

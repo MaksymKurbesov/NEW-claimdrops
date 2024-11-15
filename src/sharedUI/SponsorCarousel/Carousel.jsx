@@ -104,10 +104,11 @@ const SponsorCarousel = () => {
         onMouseLeave={autoplay.current.reset}
         classNames={styles}
       >
-        {SPONSOR_AIRDROP.map((aidrop) => {
+        {SPONSOR_AIRDROP.map((aidrop, index) => {
           return (
             <Carousel.Slide
               className={`${styles["slide"]} ${colors[aidrop.color]}`}
+              key={index}
             >
               <div className={styles["slide-wrapper"]}>
                 <img

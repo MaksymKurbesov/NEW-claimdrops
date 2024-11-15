@@ -17,3 +17,8 @@ export const identifyCryptoWallet = (text) => {
   // Если не соответствует ни одному из форматов
   return isCryptoWallet;
 };
+
+export const cutWalletNumber = (str) => {
+  if (str.length <= 12) return str; // Если строка короче 12 символов, возвращаем её целиком
+  return `${str.slice(0, 6)}...${str.slice(-6)}`;
+};

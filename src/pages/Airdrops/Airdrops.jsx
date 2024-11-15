@@ -70,9 +70,9 @@ const Airdrops = () => {
           you will also receive a Telegram alert.
         </p>
         <ul className={styles["network-list"]}>
-          {NETWORKS.map((network) => {
+          {NETWORKS.map((network, index) => {
             return (
-              <li>
+              <li key={index}>
                 <p>
                   <img src={network.icon} alt={""} width={20} />
                   {network.name}
