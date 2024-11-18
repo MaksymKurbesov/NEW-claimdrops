@@ -8,8 +8,8 @@ import StarknetIcon from "../../../../assets/crypto-icons/starknet.svg";
 import { Button, Input } from "@mantine/core";
 import { IconArrowRight, IconStarFilled } from "@tabler/icons-react";
 import { useState } from "react";
-import { identifyCryptoWallet } from "../../../../helpers/helpers.js";
-import { NavLink, useNavigate } from "react-router-dom";
+import { isCryptoWallet } from "../../../../helpers/helpers.js";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const [isError, setIsError] = useState(false);
@@ -17,8 +17,8 @@ const Hero = () => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    const isCryptoWallet = identifyCryptoWallet(walletNumber);
-    if (!isCryptoWallet) {
+    const isCrypto = isCryptoWallet(walletNumber);
+    if (!isCrypto) {
       setIsError(true);
       return;
     }
@@ -71,8 +71,8 @@ const Hero = () => {
           <img src={StarknetIcon} alt={""} />
         </div>
         <p className={styles["check-text"]}>
-          Check any crypto wallet address for unclaimed airdrops with Drops. See
-          supported networks
+          Check any crypto wallet address for unclaimed airdrops with
+          DropScanner. <Link to={"/airdrops"}>See supported networks</Link>
         </p>
         <p className={styles["over-text"]}>
           <span>

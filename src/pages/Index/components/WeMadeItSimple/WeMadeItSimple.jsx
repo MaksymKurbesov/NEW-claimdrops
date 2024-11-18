@@ -4,7 +4,7 @@ import Image2 from "../../../../assets/we-made2.webp";
 import {
   IconCrown,
   IconRosetteDiscountCheckFilled,
-  IconShieldExclamation,
+  IconBoltFilled,
   IconWorld,
   IconBrandTelegram,
   IconSpy,
@@ -35,12 +35,12 @@ const WeMadeItSimple = () => {
               </p>
             </li>
             <li>
-              <IconShieldExclamation color={"#FF9400"} />
+              <IconBoltFilled color={"#FF9400"} />
               <p>
-                <span>One time connect wallet.</span> Simply enter any crypto
-                wallet address from the supported networks for verification. To
-                enable access to the full set of features, a one-time wallet
-                connection is required.
+                <span>Boost your rewards.</span> Add a crypto wallet from our
+                supported networks to unlock access to exclusive airdrops and
+                more exciting features. A one-time wallet connection is all it
+                takes to discover even more opportunities!
               </p>
             </li>
           </ul>

@@ -10,8 +10,16 @@ import {
 } from "@tabler/icons-react";
 import SponsorCarousel from "../../sharedUI/SponsorCarousel/Carousel.jsx";
 import { ScrollRestoration } from "react-router-dom";
+import { useAuthState } from "../../hooks/userAuthState.js";
+import { auth } from "../../main.jsx";
+import Referrals from "./Referrals/Referrals.jsx";
+import Statistic from "./Statistic/Statistic.jsx";
+import { useSignInModal } from "../../context/SignInModalContext.jsx";
 
 const Earn = () => {
+  const [user] = useAuthState(auth);
+  const { isVisible, updateIsVisible } = useSignInModal();
+
   return (
     <div className={styles["earn"]}>
       <Carousel />
@@ -20,22 +28,31 @@ const Earn = () => {
           Invite friends, get <span>10%</span> <br />
           of revenue share
         </h1>
-        <div className={styles["log-in-wrapper"]}>
-          <span className={styles["icon"]}>
-            <IconBoltFilled />
-          </span>
-          <p>Log in to get your personal link</p>
-          <span className={styles["start-earning"]}>
-            Start earning from the revenue share immidiattely
-          </span>
-          <Button
-            color={"#FF9400"}
-            radius={"md"}
-            leftSection={<IconBrandTelegram />}
-          >
-            Log in
-          </Button>
-        </div>
+        {user ? (
+          <>
+            <Referrals />
+            <Statistic />
+          </>
+        ) : (
+          <div className={styles["log-in-wrapper"]}>
+            <span className={styles["icon"]}>
+              <IconBoltFilled />
+            </span>
+            <p>Log in to get your personal link</p>
+            <span className={styles["start-earning"]}>
+              Start earning from the revenue share immidiattely
+            </span>
+            <Button
+              color={"#FF9400"}
+              radius={"md"}
+              leftSection={<IconBrandTelegram />}
+              onClick={() => updateIsVisible()}
+            >
+              Log in
+            </Button>
+          </div>
+        )}
+
         <ul className={styles["steps-list"]}>
           <li>
             <span className={styles["step-icon"]}>

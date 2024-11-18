@@ -6,63 +6,126 @@ import MobileFeedbacks from "./MobileFeedbacks.jsx";
 
 export const FEEDBACKS = [
   {
-    text: '"Didn\'t realize this exists but super helpful, and realized I have some unclaimed $EIGEN 🫡"',
+    text: (
+      <p>
+        "Didn't realize this exists but super helpful, and realized I have some
+        unclaimed <span>$EIGEN</span> 🫡"
+      </p>
+    ),
     name: "DeFi Dad",
     nickname: "@DeFi_Dad",
   },
   {
-    text: '"One of the best tool to check ALL of your airdrops allocation"',
+    text: (
+      <p>"One of the best tool to check ALL of your airdrops allocation"</p>
+    ),
     name: "tobi",
     nickname: "@Tobific",
   },
   {
-    text: '"Pretty good tool to check your $EIGEN airdrop allos No need to connect wallet. Just paste it"',
+    text: (
+      <p>
+        "Pretty good tool to check your <span>$EIGEN</span> airdrop allos No
+        need to connect wallet. Just paste it"
+      </p>
+    ),
     name: "OxTøchi 🦇🔈",
     nickname: "@OxTochi",
   },
   {
-    text: '"I just found 8 Airdrops worth at least $197 to claim for my address on @DropsBotHQ Check it out!"',
-    name: "hottiebabegem ⫷🔆⫸",
+    text: (
+      <p>
+        "I found <span>8</span> airdrops worth <span>$197</span> on my address!
+        Thank you <span>@DropScannerAlertsBot</span> for such a discovery!"
+      </p>
+    ),
+    name: "hottiebabegem",
     nickname: "@HottieBabeGem",
   },
   {
-    text: '"Didn\'t realize this exists but super helpful, and realized I have some unclaimed $EIGEN 🫡"',
+    text: (
+      <p>
+        "I discovered <span>4</span> airdrops with a total value of more than{" "}
+        <span>$215</span>. This tool really helps you not miss out on
+        opportunities!"
+      </p>
+    ),
     name: "DeFi Dad",
     nickname: "@DeFi_Dad",
   },
   {
-    text: '"One of the best tool to check ALL of your airdrops allocation"',
+    text: (
+      <p>
+        "Who would’ve thought I’d find <span>3</span> airdrops worth over{" "}
+        <span>$332</span> just by checking with{" "}
+        <span>@DropScannerAlertsBot</span>? Highly recommended!"
+      </p>
+    ),
     name: "tobi",
     nickname: "@Tobific",
   },
   {
-    text: '"Pretty good tool to check your $EIGEN airdrop allos No need to connect wallet. Just paste it"',
+    text: (
+      <p>
+        "Using this tool, I found an airdrop worth <span>$121</span> that I
+        didn’t even know I could claim!"
+      </p>
+    ),
     name: "OxTøchi 🦇🔈",
     nickname: "@OxTochi",
   },
   {
-    text: '"I just found 8 Airdrops worth at least $197 to claim for my address on @DropsBotHQ Check it out!"',
-    name: "hottiebabegem ⫷🔆⫸",
+    text: (
+      <p>
+        "Amazing service! It’s fast, easy, and most importantly — effective.
+        Thanks for your work!"
+      </p>
+    ),
+    name: "hottiebabegem",
     nickname: "@HottieBabeGem",
   },
   {
-    text: '"Didn\'t realize this exists but super helpful, and realized I have some unclaimed $EIGEN 🫡"',
+    text: (
+      <p>
+        "Surprisingly, <span>4</span> of my addresses qualify for the{" "}
+        <span>ZkSync Airdrop</span>, with a total value exceeding{" "}
+        <span>$558</span>. Great tool!"
+      </p>
+    ),
     name: "DeFi Dad",
     nickname: "@DeFi_Dad",
   },
   {
-    text: '"One of the best tool to check ALL of your airdrops allocation"',
+    text: (
+      <p>
+        "I found <span>3</span> airdrops worth <span>$723</span> using{" "}
+        <span>@DropScannerAlertsBot</span>. This app is a must-have for anyone
+        in crypto."
+      </p>
+    ),
     name: "tobi",
     nickname: "@Tobific",
   },
   {
-    text: '"Pretty good tool to check your $EIGEN airdrop allos No need to connect wallet. Just paste it"',
+    text: (
+      <p>
+        "Checked my address and found <span>2</span> airdrops worth a total of{" "}
+        <span>$258</span>. The service is very convenient and saves a lot of
+        time."
+      </p>
+    ),
     name: "OxTøchi 🦇🔈",
     nickname: "@OxTochi",
   },
   {
-    text: '"I just found 8 Airdrops worth at least $197 to claim for my address on @DropsBotHQ Check it out!"',
-    name: "hottiebabegem ⫷🔆⫸",
+    text: (
+      <p>
+        "I discovered 5 airdrops worth <span>$242</span> on my account. I never
+        imagined there’d be such a sum waiting there. Thanks,{" "}
+        <span>@DropScannerAlertsBot</span>!"
+      </p>
+    ),
+    name: "hottiebabegem",
     nickname: "@HottieBabeGem",
   },
 ];

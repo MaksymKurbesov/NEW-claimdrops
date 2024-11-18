@@ -78,5 +78,11 @@
 
     .start-finding-mobile-button {
         display: block !important;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .start-finding-mobile-button:active {
+        transform: translateX(-50%) translateY(-3px);
     }
 }

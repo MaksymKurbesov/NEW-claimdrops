@@ -2,15 +2,32 @@ import styles from "./Dashboard.module.css";
 import { useAuthState } from "../../hooks/userAuthState.js";
 import { auth } from "../../main.jsx";
 import SponsorCarousel from "../../sharedUI/SponsorCarousel/Carousel.jsx";
-import { Button } from "@mantine/core";
+import { Button, LoadingOverlay } from "@mantine/core";
 import { IconBrandTelegram, IconRadar2, IconCrown } from "@tabler/icons-react";
-import { NavLink } from "react-router-dom";
-import YourAddresses from "../Address/YourAddresses/YourAddresses.jsx";
+import YourAddresses from "./YourAddresses/YourAddresses.jsx";
+import { ScrollRestoration, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDisclosure } from "@mantine/hooks";
+import PricingModal from "../../sharedUI/PricingModal/PricingModal.jsx";
+import BannerImage from "../../assets/dashboard-banner.webp";
 
 const Dashboard = () => {
   const [user, loading] = useAuthState(auth);
+  const navigate = useNavigate();
+  const [opened, { open, close }] = useDisclosure(false);
+  const [loadingOverlayIsOpen, setLoadingOverlayIsOpen] = useState(true);
 
-  console.log(user, "user");
+  useEffect(() => {
+    setTimeout(() => {
+      setLoadingOverlayIsOpen(false);
+    }, 1500);
+  }, []);
+
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate("/");
+    }
+  }, [user, loading]);
 
   return (
     <div className={styles["dashboard"]}>
@@ -19,7 +36,7 @@ const Dashboard = () => {
         <div className={styles["title-wrapper"]}>
           <h2 className={styles["title"]}>Dashboard</h2>
           <p>No subscription</p>
-          <Button variant={"light"} color={"#FF9400"}>
+          <Button onClick={open} variant={"light"} color={"#FF9400"}>
             Get Premium
           </Button>
           <Button color={"#FF9400"}>Connect Wallet</Button>
@@ -30,25 +47,38 @@ const Dashboard = () => {
             As a premium user you can track all your addresses and get Telegram
             alerts on eligibility.
           </p>
-          <Button
-            className={styles["upgrade-button"]}
-            color={"white"}
-            radius={"md"}
-            leftSection={<IconCrown />}
-          >
-            Upgrade Plan
-          </Button>
-          <Button
-            color={"white"}
-            variant={"subtle"}
-            radius={"md"}
-            leftSection={<IconBrandTelegram />}
-          >
-            Join Chat
-          </Button>
+          <div className={styles["banner-buttons"]}>
+            <Button
+              className={styles["upgrade-button"]}
+              color={"white"}
+              radius={"md"}
+              leftSection={<IconCrown />}
+              onClick={open}
+            >
+              Upgrade Plan
+            </Button>
+            <Button
+              color={"white"}
+              variant={"subtle"}
+              radius={"md"}
+              leftSection={<IconBrandTelegram />}
+            >
+              Join Chat
+            </Button>
+          </div>
+          <img
+            className={styles["banner-image"]}
+            src={BannerImage}
+            width={300}
+          />
         </div>
         <h2 className={styles["eligible-airdrops"]}>Eligible Airdrops</h2>
         <div className={styles["log-in-wrapper"]}>
+          <LoadingOverlay
+            visible={loadingOverlayIsOpen}
+            zIndex={1000}
+            overlayProps={{ radius: "sm", blur: 2 }}
+          />
           <span className={styles["icon"]}>
             <IconRadar2 size={50} color={"rgb(255,204,134)"} />
           </span>
@@ -58,9 +88,11 @@ const Dashboard = () => {
             will be shown here. In the meantime, you can add all your addresses.
           </span>
         </div>
-        <YourAddresses />
+        <YourAddresses openPricingModal={open} />
       </div>
       <SponsorCarousel />
+      <PricingModal opened={opened} close={close} />
+      <ScrollRestoration />
     </div>
   );
 };

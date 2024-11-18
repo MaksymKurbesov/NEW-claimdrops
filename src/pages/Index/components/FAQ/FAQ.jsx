@@ -39,7 +39,7 @@ const FAQ = () => {
   ));
 
   return (
-    <div className={styles["FAQ"]}>
+    <div className={styles["FAQ"]} id={"FAQ"}>
       <div>
         <h3 className={"little-title"}>Frequently asked questions</h3>
         <p className={styles["subtitle"]}>Everything you need to know</p>

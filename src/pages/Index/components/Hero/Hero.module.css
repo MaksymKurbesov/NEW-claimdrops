@@ -120,6 +120,10 @@
     text-align: center;
 }
 
+.check-text a {
+    text-decoration: underline;
+}
+
 .over-text {
     display: flex;
     align-items: center;

@@ -9,7 +9,7 @@ import CosmosIcon from "../../assets/crypto-icons/cosmos.webp";
 import BitcoinIcon from "../../assets/crypto-icons/bitcoin.webp";
 import ExpiringBanner from "../../sharedUI/ExpiringBanner/ExpiringBanner.jsx";
 import { Accordion } from "@mantine/core";
-import { ScrollRestoration } from "react-router-dom";
+import { Link, ScrollRestoration } from "react-router-dom";
 
 const NETWORKS = [
   { icon: EthereumIcon, name: "Ethereum & L2", airdrops: 55 },
@@ -34,17 +34,17 @@ const QUESTIONS = [
       "\n" +
       "By consistently engaging in these onchain activities, users not only contribute to the network's growth and stability but also position themselves as active members of the community, often making them eligible for airdrops. These onchain actions are verifiable through the blockchain, ensuring that the rewards are distributed to genuine and engaged users.\n" +
       "\n" +
-      "Drops makes it easy to check your eligibility for airdrops by monitoring your wallet addresses across multiple networks. Saving your addresses, you can receive real-time notifications on Telegram when you qualify for airdrops, ensuring that you can claim your airdrop before it expires, so you never miss out on free tokens.",
+      "DropScanner makes it easy to check your eligibility for airdrops by monitoring your wallet addresses across multiple networks. Saving your addresses, you can receive real-time notifications on Telegram when you qualify for airdrops, ensuring that you can claim your airdrop before it expires, so you never miss out on free tokens.",
   },
   {
     value: "How can I find unclaimed Airdrops?",
     description:
-      "Drops is the most advanced airdrop checker. It finds unclaimed crypto airdrops for you by monitoring all your wallet addresses across multiple networks like Ethereum, Solana, Cosmos, Aptos, and Bitcoin. Just paste your crypto wallet address to the checker. No need to connect a wallet.",
+      "DropScanner is the most advanced airdrop checker. It finds unclaimed crypto airdrops for you by monitoring all your wallet addresses across multiple networks like Ethereum, Solana, Cosmos, Aptos, and Bitcoin. Just paste your crypto wallet address to the checker. No need to connect a wallet.",
   },
   {
     value: "How do I avoid missing Airdrops?",
     description:
-      "We've made it simple. Just enter any crypto wallet addresses, and Drops will instantly check your eligibility for all recent and verified airdrops. It will also run automatic background checks for new airdrops. If you're eligible, you'll get a notification on Telegram.",
+      "We've made it simple. Just enter any crypto wallet addresses, and DropScanner will instantly check your eligibility for all recent and verified airdrops. It will also run automatic background checks for new airdrops. If you're eligible, you'll get a notification on Telegram.",
   },
 ];
 
@@ -100,7 +100,10 @@ const Airdrops = () => {
           {QUESTION_ITEMS}
         </Accordion>
         <p className={styles["read-more"]}>
-          Read more from the <span>FAQ section</span>
+          Read more from the{" "}
+          <Link to={"/#FAQ"}>
+            <span>FAQ section</span>
+          </Link>
         </p>
       </div>
       <SponsorCarousel />

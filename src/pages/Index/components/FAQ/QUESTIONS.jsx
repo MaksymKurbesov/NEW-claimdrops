@@ -16,7 +16,7 @@ export const AIRDROPS = [
         financial benefit. <br />
         <br />
         If you have active wallets or addresses on any of the supported
-        blockchains/networks, you might be eligible for Airdrops!
+        blockchains/networks, you might be eligible for airdrops!
       </p>
     ),
   },
@@ -39,7 +39,7 @@ export const AIRDROPS = [
         blockchain, ensuring that the rewards are distributed to genuine and
         engaged users. <br />
         <br />
-        "Drops makes it easy to check your eligibility for airdrops by
+        "DropScanner makes it easy to check your eligibility for airdrops by
         monitoring your wallet addresses across multiple networks. Saving your
         addresses, you can receive real-time notifications on Telegram when you
         qualify for airdrops, ensuring that you can claim your airdrop before it
@@ -54,10 +54,11 @@ export const GENERAL = [
     value: "How can I find unclaimed Airdrops?",
     description: (
       <p className={styles["description"]}>
-        Drops is the most advanced airdrop checker. It finds unclaimed crypto
-        airdrops for you by monitoring all your wallet addresses across multiple
-        networks like Ethereum, Solana, Cosmos, Aptos, and Bitcoin. Just paste
-        your crypto wallet address to the checker. No need to connect a wallet.
+        DropScanner is the most advanced airdrop checker. It finds unclaimed
+        crypto airdrops for you by monitoring all your wallet addresses across
+        multiple networks like Ethereum, Solana, Cosmos, Aptos, and Bitcoin.
+        Just paste your crypto wallet address to the checker. No need to connect
+        a wallet.
       </p>
     ),
   },
@@ -65,10 +66,10 @@ export const GENERAL = [
     value: "How do I avoid missing Airdrops?",
     description: (
       <p className={styles["description"]}>
-        We've made it simple. Just enter any crypto wallet addresses, and Drops
-        will instantly check your eligibility for all recent and verified
-        airdrops. It will also run automatic background checks for new airdrops.
-        If you're eligible, you'll get a notification on Telegram.
+        We've made it simple. Just enter any crypto wallet addresses, and
+        DropScanner will instantly check your eligibility for all recent and
+        verified airdrops. It will also run automatic background checks for new
+        airdrops. If you're eligible, you'll get a notification on Telegram.
       </p>
     ),
   },
@@ -76,22 +77,21 @@ export const GENERAL = [
     value: "What is Drops?",
     description: (
       <p className={styles["description"]}>
-        Drops (previously called "AirdropHunt.fun") is the most advanced airdrop
-        checker, automatically finding unclaimed crypto airdrops for you. Track
-        and monitor all your wallet addresses across multiple networks like
-        Ethereum, Solana, Cosmos, Aptos and Bitcoin, Telegram alerts on
-        eligibility, and never miss an airdrop again. Drops makes airdrop
-        hunting easy with Telegram alerts.
+        DropScanner is the most advanced airdrop checker, automatically finding
+        unclaimed crypto airdrops for you. Track and monitor all your wallet
+        addresses across multiple networks like Ethereum, Solana, Cosmos, Aptos
+        and Bitcoin, Telegram alerts on eligibility, and never miss an airdrop
+        again. DropScanner makes airdrop hunting easy with Telegram alerts.
       </p>
     ),
   },
   {
-    value: "What blockchains are supported on Drops?",
+    value: "What blockchains are supported on DropScanner?",
     description: (
       <p className={styles["description"]}>
-        Currently Drops can check unclaimed airdrops on Ethereum & L2, Solana,
-        Starknet, Aptos, Sui, Cosmos, Bitcoin See the full list on all supported
-        airdrops page.
+        Currently DropScanner can check unclaimed airdrops on Ethereum & L2,
+        Solana, Starknet, Aptos, Sui, Cosmos, Bitcoin See the full list on all
+        supported airdrops page.
       </p>
     ),
   },
@@ -152,15 +152,15 @@ export const PRIVACY = [
       <p className={styles["description"]}>
         Unlikely. All eligibility check requests are routed (proxied) through
         our servers and are not linked to your account in any way. However,
-        Drops is not intended for sybil attacks and strive to maintain strong
-        relationships and communication with the protocols we support to provide
-        a best possible service, while ensuring user privacy is never
+        DropScanner is not intended for sybil attacks and strive to maintain
+        strong relationships and communication with the protocols we support to
+        provide a best possible service, while ensuring user privacy is never
         compromised!
       </p>
     ),
   },
   {
-    value: "Is my data safe on Drops?",
+    value: "Is my data safe on DropScanner?",
     description: (
       <p className={styles["description"]}>
         Yes, it is safe. We never share your data with any outside project or
@@ -216,7 +216,7 @@ export const BILLING = [
     description: (
       <p className={styles["description"]}>
         You can simply subscribe to premium again. All the addresses you have
-        added and Airdrops you are eligible become visible again after.
+        added and airdrops you are eligible become visible again after.
       </p>
     ),
   },

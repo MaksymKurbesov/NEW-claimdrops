@@ -2,10 +2,10 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  updateProfile,
 } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 import { auth, db } from "../main.jsx";
+import { generateCode } from "../helpers/helpers.js";
 
 export default class AuthService {
   constructor() {}
@@ -18,6 +18,7 @@ export default class AuthService {
 
       await setDoc(doc(db, "users", email), {
         email: trimmedEmail,
+        refCode: generateCode(),
       });
     } catch (err) {
       console.error(err);
@@ -51,14 +52,26 @@ export default class AuthService {
     } catch (err) {
       console.log(err.code);
 
+      const invalidCredential =
+        err.code === "auth/invalid-credential" ||
+        err.code === "auth/invalid-email";
+
+      if (invalidCredential) {
+        throw new Error(`Неверный email адрес или пароль`);
+        // return `Неверный email адрес или пароль`;
+      }
+
       if (err.code === "auth/wrong-password")
+        // throw new Error(`Неверный email адрес или пароль`);
         return `Неверный email адрес или пароль`;
       if (err.code === "auth/user-not-found")
+        // throw new Error(`Такого пользователя не существует`);
         return `Такого пользователя не существует`;
       if (err.code === "auth/too-many-requests")
+        // throw new Error(`Слишком частые запросы. Подождите примерно 5 минут.`);
         return `Слишком частые запросы. Подождите примерно 5 минут.`;
 
-      alert(err.code);
+      // alert(err.code);
     }
   }
 

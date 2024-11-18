@@ -1,0 +1,100 @@
+.addresses-list-wrapper {
+    position: relative;
+}
+
+.addresses-list {
+    position: relative;
+    mask-image: linear-gradient(90deg, rgb(0, 0, 0) calc(100% - 40px), rgba(0, 0, 0, 0));
+}
+
+.addresses-list li {
+    width: 100%;
+    /*width: 100%;*/
+    overflow-x: auto;
+    scrollbar-width: none;
+
+}
+
+/*.addresses-list:before {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    right: 0;*/
+/*    width: 30px;*/
+/*    height: 100%;*/
+/*    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0));*/
+/*}*/
+
+.addresses-list li div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-width: max-content;
+    /*gap: 10px;*/
+}
+
+.addresses-list li div p:first-child {
+    font-size: 14px;
+}
+
+.network {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 20px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.no-airdrop {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    opacity: 0.5;
+    font-weight: 400;
+    font-size: 14px;
+    margin: 0 30px;
+}
+
+.view-button {
+    margin-left: auto;
+}
+
+.more-button {
+    width: 24px;
+    height: 24px;
+    display: block;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.log-in-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(237, 240, 245, 0.7);
+    padding: 30px 15px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 60px;
+}
+
+.log-in-text {
+    font-size: 14px;
+    opacity: 0.6;
+    margin-bottom: 20px;
+    max-width: 400px;
+    width: 100%;
+}
+
+
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item span {
+    font-size: 12px;
+}

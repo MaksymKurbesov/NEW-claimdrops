@@ -8,7 +8,9 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import AuthService from "./services/AuthService.js";
-import { UserProvider } from "./UserContext.jsx";
+import { UserProvider } from "./context/UserContext.jsx";
+import UserService from "./services/UserService.js";
+import { SignInModalProvider } from "./context/SignInModalContext.jsx";
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyDsPkfeWIwnG42xreJQ78cGi0RQ8OS4uew",
@@ -23,13 +25,16 @@ export const db = getFirestore(firebaseApp);
 export const auth = getAuth(firebaseApp);
 
 export const authService = new AuthService();
+export const userService = new UserService();
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <MantineProvider>
-      <UserProvider>
+  // <StrictMode>
+  <MantineProvider>
+    <UserProvider>
+      <SignInModalProvider>
         <RouterProvider router={routes} />
-      </UserProvider>
-    </MantineProvider>
-  </StrictMode>,
+      </SignInModalProvider>
+    </UserProvider>
+  </MantineProvider>,
+  // </StrictMode>,
 );

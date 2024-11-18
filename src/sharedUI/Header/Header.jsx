@@ -1,63 +1,27 @@
 import styles from "./Header.module.css";
 import Logo from "../../assets/logo.webp";
 import Logo2 from "../../assets/logo2.webp";
-import {
-  Anchor,
-  Button,
-  Flex,
-  Modal,
-  PasswordInput,
-  Portal,
-  TextInput,
-} from "@mantine/core";
-import { IconLogin2, IconUserFilled } from "@tabler/icons-react";
+import { Button, Flex } from "@mantine/core";
+import { IconLogout, IconUserFilled, IconLogin2 } from "@tabler/icons-react";
 import useWindowSize from "../../hooks/useWindowSize";
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useDisclosure } from "@mantine/hooks";
 import { authService } from "../../main.jsx";
-import { useUser } from "../../UserContext.jsx";
+import SignInModal from "../SignInModal/SignInModal.jsx";
+import { useSignInModal } from "../../context/SignInModalContext.jsx";
 
 const Header = ({ user }) => {
   const [scrollY, setScrollY] = useState(0);
+  const windowSize = useWindowSize();
   const location = useLocation();
   const navigate = useNavigate();
   const isIndexPage = location.pathname === "/";
-  const [opened, { open, close }] = useDisclosure(false);
   const [isLogin, setIsLogin] = useState(true);
 
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  const toggleForm = () => setIsLogin(!isLogin);
-
-  const handleSubmit = () => {
-    if (userEmail === "" || userPassword === "") return;
-    setIsLoading(true);
-
-    if (isLogin) {
-      authService
-        .logInWithEmailAndPassword(userEmail, userPassword)
-        .then(() => {
-          navigate("/dashboard/overview");
-        })
-        .finally(() => {
-          setIsLoading(false);
-          close();
-        });
-    } else {
-      authService
-        .registerWithEmailAndPassword(userEmail, userPassword)
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
-  };
+  const { isVisible, updateIsVisible } = useSignInModal();
 
   useEffect(() => {
     const handleScroll = () => {
-      // Используем requestAnimationFrame для оптимизации
       requestAnimationFrame(() => {
         setScrollY(window.scrollY); // или `window.scrollTop`
       });
@@ -71,8 +35,8 @@ const Header = ({ user }) => {
     <header
       className={`${styles["header"]} ${!isIndexPage ? styles["white-header"] : ""} ${scrollY >= 100 ? styles["scrolled-header"] : ""}`}
     >
-      <Flex justify={"space-between"} align={"center"}>
-        <NavLink to={"/"}>
+      <Flex align={"center"}>
+        <NavLink to={"/"} className={styles["logo-link"]}>
           <img
             className={styles["logo"]}
             src={scrollY >= 100 || !isIndexPage ? Logo2 : Logo}
@@ -80,6 +44,7 @@ const Header = ({ user }) => {
             width={45}
             height={45}
           />
+          <span>DropScanner</span>
         </NavLink>
         <nav className={styles["nav"]}>
           <ul>
@@ -112,94 +77,60 @@ const Header = ({ user }) => {
           </ul>
         </nav>
         {user ? (
-          <Button
-            leftSection={<IconUserFilled size={18} />}
-            color="rgba(255, 255, 255, 1)"
-            variant="subtle"
-            radius="md"
-            className={styles["log-in"]}
-            onClick={() => navigate("/dashboard/overview")}
-          >
-            Dashboard
-          </Button>
+          <>
+            <Button
+              // leftSection={<IconUserFilled size={18} />}
+              color="rgba(255, 255, 255, 1)"
+              variant="subtle"
+              radius="md"
+              className={styles["log-in-button"]}
+              onClick={() => navigate("/dashboard/overview")}
+            >
+              {windowSize.width <= 600 ? (
+                <IconUserFilled size={18} />
+              ) : (
+                <>
+                  <IconUserFilled size={18} />
+                  <span className={styles["dashboard-text"]}>Dashboard</span>
+                </>
+              )}
+              {/*Dashboard*/}
+            </Button>
+            {!isIndexPage && (
+              <Button
+                onClick={() => authService.logout()}
+                size={"xs"}
+                variant={"light"}
+                color={"#ff9400"}
+              >
+                <IconLogout size={14} />
+              </Button>
+            )}
+          </>
         ) : (
           <Button
             leftSection={<IconLogin2 size={18} />}
-            color="rgba(255, 255, 255, 1)"
+            color={
+              scrollY >= 100 || !isIndexPage
+                ? "#ff9400"
+                : "rgba(255, 255, 255, 1)"
+            }
             variant="subtle"
             radius="md"
             className={styles["log-in"]}
-            onClick={open}
+            onClick={() => updateIsVisible()}
           >
             Sign In
           </Button>
         )}
-        {/*<Button*/}
-        {/*  leftSection={<IconLogin2 size={18} />}*/}
-        {/*  color="rgba(255, 255, 255, 1)"*/}
-        {/*  variant="subtle"*/}
-        {/*  radius="md"*/}
-        {/*  className={styles["log-in"]}*/}
-        {/*  onClick={open}*/}
-        {/*>*/}
-        {/*  Sign In*/}
-        {/*</Button>*/}
       </Flex>
 
-      <Portal>
-        <Modal
-          centered
-          opened={opened}
-          onClose={close}
-          title={isLogin ? "Sign In" : "Sign Up"}
-          className={styles["modal"]}
-          styles={{
-            header: { padding: "15px 15px 3px 15px", minHeight: 40 },
-            content: { borderRadius: 15 },
-          }}
-          overlayProps={{
-            backgroundOpacity: 0.55,
-            blur: 4,
-          }}
-        >
-          <p className={styles["access-text"]}>
-            {isLogin ? "Access your account" : "Create a new account"}
-          </p>
-          <TextInput
-            label="Email"
-            placeholder={"example@example.com"}
-            className={styles["email-input"]}
-            value={userEmail}
-            onChange={(event) => setUserEmail(event.currentTarget.value)}
-          />
-          <PasswordInput
-            className={styles["password-input"]}
-            label="Password"
-            value={userPassword}
-            onChange={(event) => setUserPassword(event.currentTarget.value)}
-          />
-          {!isLogin && (
-            <PasswordInput
-              className={styles["password-input"]}
-              label="Confirm Password"
-            />
-          )}
-          <Button
-            color={"#FF9400"}
-            fullWidth
-            className={styles["auth-button"]}
-            onClick={() => handleSubmit()}
-            disabled={isLoading}
-          >
-            {isLogin ? "Sign In" : "Sign Up"}
-          </Button>
-          <Anchor onClick={toggleForm} className={styles["modal-link"]}>
-            {isLogin
-              ? "No account? Sign Up"
-              : "Already have an account? Sign In"}
-          </Anchor>
-        </Modal>
-      </Portal>
+      <SignInModal
+        opened={isVisible}
+        close={updateIsVisible}
+        isLogin={isLogin}
+        setIsLogin={setIsLogin}
+      />
     </header>
   );
 };
