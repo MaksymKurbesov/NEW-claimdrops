@@ -46,7 +46,7 @@ const Dashboard = () => {
 
     if (userFirstLogin) {
       setIsOpen(true);
-      userService.updateFirstLogin(user.email);
+      // userService.updateFirstLogin(user.email);
     }
   }, [user, userFirstLogin]);
 
@@ -85,6 +85,7 @@ const Dashboard = () => {
             </Button>
             <Button
               color={"white"}
+              id={"join-chat"}
               variant={"subtle"}
               radius={"md"}
               leftSection={<IconBrandTelegram />}

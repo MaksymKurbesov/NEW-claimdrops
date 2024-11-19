@@ -28,7 +28,7 @@ const EligibleAirdrops = () => {
   }, [user]);
 
   return (
-    <div className={styles["eligible-airdrops"]}>
+    <div className={styles["eligible-airdrops"]} id={"eligible-airdrops"}>
       <ul>
         {airdrops.map((airdrop, index) => {
           return (

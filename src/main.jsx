@@ -12,6 +12,7 @@ import { UserProvider } from "./context/UserContext.jsx";
 import UserService from "./services/UserService.js";
 import { SignInModalProvider } from "./context/SignInModalContext.jsx";
 import { TourProvider } from "@reactour/tour";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyDsPkfeWIwnG42xreJQ78cGi0RQ8OS4uew",
@@ -30,15 +31,14 @@ export const userService = new UserService();
 
 const steps = [
   {
-    selector: "#connect-wallet",
+    selector: "#join-chat",
     content: (
       <div id={"step1"}>
-        <p>Connect your wallet to:</p>
-        <ul>
-          <li>• Receive new exclusive airdrops.</li>
-          <li>• Stay updated on all special offers.</li>
-          <li>• Collect rewards directly to your wallet.</li>
-        </ul>
+        <p>
+          Tap the "Join Chat" button to become part of our vibrant community.
+          Connect, share, and stay updated with everything we have to offer.
+          Don’t miss out—join us now!
+        </p>
       </div>
     ),
   },
@@ -58,8 +58,9 @@ const steps = [
     content: (
       <div id={"step3"}>
         <p>
-          Here, you'll see a list of wallets you’ve added. Connect additional
-          wallets to manage your rewards across multiple accounts.
+          Here you can see all your tracked wallets. Stay updated on eligible
+          airdrops and additional insights linked to each wallet. Make sure your
+          wallets are up-to-date to never miss an opportunity!
         </p>
       </div>
     ),
@@ -67,10 +68,18 @@ const steps = [
   // ...
 ];
 
+const disableBody = (target) => disableBodyScroll(target);
+const enableBody = (target) => enableBodyScroll(target);
+
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
   <MantineProvider>
-    <TourProvider steps={steps} disableFocusLock={false}>
+    <TourProvider
+      steps={steps}
+      scrollSmooth
+      afterOpen={disableBody}
+      beforeClose={enableBody}
+    >
       <UserProvider>
         <SignInModalProvider>
           <RouterProvider router={routes} />

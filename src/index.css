@@ -71,7 +71,7 @@ ul, ol {
     font-size: 20px;
 }
 
-#step1 ul li {
+#step1 p, #step2 p, #step3 p {
     font-size: 14px;
     opacity: 0.6;
 }
