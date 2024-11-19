@@ -3,6 +3,9 @@
 }
 
 .addresses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     position: relative;
     mask-image: linear-gradient(90deg, rgb(0, 0, 0) calc(100% - 40px), rgba(0, 0, 0, 0));
 }
@@ -12,21 +15,15 @@
     /*width: 100%;*/
     overflow-x: auto;
     scrollbar-width: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 20px;
 
 }
 
-/*.addresses-list:before {*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    right: 0;*/
-/*    width: 30px;*/
-/*    height: 100%;*/
-/*    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0));*/
-/*}*/
 
 .addresses-list li div {
-    display: flex;
+    display: grid;
+    grid-template-columns: 110px 30px 80px 1fr 68px 24px;
     align-items: center;
     width: 100%;
     min-width: max-content;
@@ -46,14 +43,24 @@
     font-weight: 400;
 }
 
+.network img {
+    border-radius: 50%;
+}
+
 .no-airdrop {
     flex-grow: 1;
     display: flex;
     justify-content: center;
     opacity: 0.5;
+    margin: 0 30px;
+}
+
+.no-airdrop span  {
+    background: #ffc467;
+    padding: 2px 9px;
     font-weight: 400;
     font-size: 14px;
-    margin: 0 30px;
+    border-radius: 10px;
 }
 
 .view-button {

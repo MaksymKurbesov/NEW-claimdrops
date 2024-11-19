@@ -2,7 +2,7 @@ import styles from "./Dashboard.module.css";
 import { useAuthState } from "../../hooks/userAuthState.js";
 import { auth } from "../../main.jsx";
 import SponsorCarousel from "../../sharedUI/SponsorCarousel/Carousel.jsx";
-import { Button, LoadingOverlay } from "@mantine/core";
+import { Badge, Button, LoadingOverlay } from "@mantine/core";
 import { IconBrandTelegram, IconRadar2, IconCrown } from "@tabler/icons-react";
 import YourAddresses from "./YourAddresses/YourAddresses.jsx";
 import { ScrollRestoration, useNavigate } from "react-router-dom";
@@ -39,7 +39,15 @@ const Dashboard = () => {
           <Button onClick={open} variant={"light"} color={"#FF9400"}>
             Get Premium
           </Button>
-          <Button color={"#FF9400"}>Connect Wallet</Button>
+          <Button
+            color={"#FF9400"}
+            className={`${styles["connect-wallet-button"]} open`}
+          >
+            <Badge color={"#ffbd57"} className={styles["button-badge"]}>
+              Exclusive airdrops
+            </Badge>
+            Connect Wallet
+          </Button>
         </div>
         <div className={styles["banner"]}>
           <h3>Upgrade and get all the benefits</h3>

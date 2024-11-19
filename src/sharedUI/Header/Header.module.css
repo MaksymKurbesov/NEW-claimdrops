@@ -17,7 +17,7 @@
     gap: 4px;
     font-size: 16px;
     font-weight: 700;
-    /*color: var(--main-orange);*/
+    color: white;
 }
 
 .header > div {
@@ -27,7 +27,7 @@
 }
 
 
-.white-header {
+.white-header nav {
     color: black;
 }
 

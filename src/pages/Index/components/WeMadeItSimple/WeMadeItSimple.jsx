@@ -1,6 +1,6 @@
 import styles from "./WeMadeItSimple.module.css";
 import Image1 from "../../../../assets/we-made1.webp";
-import Image2 from "../../../../assets/we-made2.webp";
+import Image2 from "../../../../assets/we-made2.png";
 import {
   IconCrown,
   IconRosetteDiscountCheckFilled,

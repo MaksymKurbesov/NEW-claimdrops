@@ -15,7 +15,7 @@ import { useEffect } from "react";
 export const ICON_MAP = {
   Ethereum: EthereumIcon,
   Solana: SolanaIcon,
-  Starknet: StarknetIcon,
+  StarkNet: StarknetIcon,
   Aptos: AptosIcon,
   Cosmos: CosmosIcon,
   Bitcoin: BitcoinIcon,

@@ -2,6 +2,7 @@ import styles from "./AddressesList.module.css";
 import MyCopyButton from "../../../../sharedUI/CopyButton/CopyButton.jsx";
 import {
   cutWalletNumber,
+  getRandomInt,
   identifyCryptoWallet,
 } from "../../../../helpers/helpers.js";
 import { Button, Menu } from "@mantine/core";
@@ -43,7 +44,9 @@ const AddressesList = ({ addresses }) => {
                   />
                   {identifyCryptoWallet(address)}
                 </span>
-                <span className={styles["no-airdrop"]}>No airdrops</span>
+                <span className={styles["no-airdrop"]}>
+                  <span>{getRandomInt(2, 7)} airdrops</span>
+                </span>
                 <Button
                   variant={"light"}
                   color={"#FF9400"}

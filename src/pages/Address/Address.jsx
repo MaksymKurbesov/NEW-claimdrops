@@ -20,6 +20,7 @@ import { auth, userService } from "../../main.jsx";
 import { useEffect, useState } from "react";
 import PricingModal from "../../sharedUI/PricingModal/PricingModal.jsx";
 import { useDisclosure } from "@mantine/hooks";
+import { useSignInModal } from "../../context/SignInModalContext.jsx";
 
 const Address = () => {
   const { walletId } = useParams();
@@ -29,6 +30,7 @@ const Address = () => {
   const [opened, { open, close }] = useDisclosure(false);
 
   const [isOpenLoadOverlay, setIsOpenLoadOverlay] = useState(true);
+  const { isVisible, updateIsVisible } = useSignInModal();
 
   useEffect(() => {
     const timeout = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000;
@@ -82,7 +84,17 @@ const Address = () => {
               Watching
             </Button>
           ) : (
-            <Button radius={"md"} color={"#FF9400"} onClick={() => open()}>
+            <Button
+              radius={"md"}
+              color={"#FF9400"}
+              onClick={() => {
+                if (!user) {
+                  updateIsVisible();
+                } else {
+                  open();
+                }
+              }}
+            >
               Watch this address
             </Button>
           )}
@@ -112,6 +124,7 @@ const Address = () => {
                 radius={"md"}
                 leftSection={<IconBrandTelegram />}
                 className={styles["log-in-button"]}
+                onClick={() => updateIsVisible()}
               >
                 Log in
               </Button>

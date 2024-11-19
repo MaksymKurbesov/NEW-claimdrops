@@ -13,6 +13,42 @@ const PricingList = ({ value, setValue, short }) => {
   const { updateIsVisible } = useSignInModal();
   const [user] = useAuthState(auth);
 
+  const getStartedButtonHandler = () => {
+    if (user) {
+      if (value === "monthly") {
+        window.open(
+          "https://pay.boomfi.xyz/2p3zMw4NLq4XuBftrcBD7fvuY64",
+          "_blank",
+        );
+      } else {
+        window.open(
+          "https://pay.boomfi.xyz/2p3zMw4NLq4XuBftrcBD7fvuY64",
+          "_blank",
+        );
+      }
+    } else {
+      updateIsVisible();
+    }
+  };
+
+  const getStartedButtonHandlerPleb = () => {
+    if (user) {
+      if (value === "monthly") {
+        window.open(
+          "https://pay.boomfi.xyz/2p3zVQMV9dS2Go5pShshdrUBVBC",
+          "_blank",
+        );
+      } else {
+        window.open(
+          "https://pay.boomfi.xyz/2p3zRgoe0zNtCyn4WyAw7fGlZGF",
+          "_blank",
+        );
+      }
+    } else {
+      updateIsVisible();
+    }
+  };
+
   return (
     <>
       <div className={styles["segmented-control"]}>
@@ -93,11 +129,7 @@ const PricingList = ({ value, setValue, short }) => {
             color={"#FF9400"}
             radius={"md"}
             variant={"filled"}
-            onClick={() => {
-              if (user) return;
-
-              updateIsVisible();
-            }}
+            onClick={getStartedButtonHandler}
           >
             Get Started
           </Button>
@@ -152,11 +184,7 @@ const PricingList = ({ value, setValue, short }) => {
             color={"#FF9400"}
             radius={"md"}
             variant={"outline"}
-            onClick={() => {
-              if (user) return;
-
-              updateIsVisible();
-            }}
+            onClick={getStartedButtonHandlerPleb}
           >
             Get Started
           </Button>
