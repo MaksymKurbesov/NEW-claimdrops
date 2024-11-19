@@ -52,6 +52,79 @@
     opacity: 0.7;
 }
 
+.airdrops-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.airdrops-list li {
+    display: grid;
+    grid-template-columns: 20px 40px 60px 1fr 70px 130px;
+    align-items: center;
+    gap: 10px;
+    line-height: 1;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 25px;
+}
+
+.airdrops-list li > svg {
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+.airdrops-list li img {
+    border-radius: 50%;
+}
+
+.airdrop-name {
+    font-weight: 700;
+}
+
+/*.airdrop-timeleft {*/
+/*    font-size: 12px;*/
+/*    text-align: center;*/
+
+/*}*/
+
+/*.airdrop-timeleft span {*/
+/*    background: rgba(123, 255, 0, 0.34);*/
+/*    padding: 4px 10px;*/
+/*    border-radius: 10px;*/
+/*    color: #35792e;*/
+/*}*/
+
+.airdrop-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    gap: 5px;
+}
+
+.airdrop-status span {
+    display: inline;
+    background: rgba(123, 255, 0, 0.34);
+    padding: 4px 10px;
+    border-radius: 10px;
+    color: #35792e;
+}
+
+.airdrop-price {
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.airdrop-price span {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
 .log-in-wrapper {
     display: flex;
     justify-content: center;

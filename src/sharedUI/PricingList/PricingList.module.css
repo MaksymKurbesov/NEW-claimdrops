@@ -23,12 +23,12 @@
     border: none;
 }
 
-.pricing-list > div:nth-child(2) {
-    border: 2px solid var(--main-orange);
-    overflow: visible;
+.whale {
+    border: 2px solid var(--main-orange) !important;
+    overflow: visible !important;
 }
 
-.pricing-list > div:nth-child(2):before {
+.whale:before {
     content: "Most Popular";
     width: 101%;
     height: 28px;
@@ -113,30 +113,36 @@
 }
 
 .short {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
-.short div:first-child {
-    order: 1;
-}
+/*.short div:first-child {*/
+/*    order: 1;*/
+/*}*/
 
 @media screen and (max-width: 800px) {
     .pricing-list {
-        grid-template-columns: max-content;
+        grid-template-columns: 1fr;
         justify-content: center;
         gap: 20px;
     }
 
     .pricing-list > div {
-        max-width: 300px;
+        max-width: 400px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .pricing-list > div:nth-child(1) {
+        order: 1;
     }
 
     .pricing-list > div:nth-child(2) {
-        order: -1;
+        order: 1;
     }
 
     .pricing-list > div:nth-child(3) {
-        order: -1;
+        /*order: 0;*/
     }
 
     .watch-1-address {

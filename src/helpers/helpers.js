@@ -1,3 +1,5 @@
+import SHA256 from "crypto-js/sha256";
+
 export const isCryptoWallet = (text) => {
   // Регулярные выражения для каждого типа кошельков
   const ethereumRegex = /^0x[a-fA-F0-9]{40}$/; // Ethereum (42 символа, 0x-префикс)
@@ -65,4 +67,22 @@ export const getRandomInt = (min, max) => {
   const minCeiled = Math.ceil(min);
   const maxFloored = Math.floor(max);
   return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
+};
+
+export const getAirdrops = async (wallet, allAirdrops) => {
+  // Генерация хэша
+  const hash = SHA256(wallet).toString();
+
+  // Преобразуем хэш в число
+  const seed = parseInt(hash.slice(0, 8), 16);
+
+  // Генерация псевдослучайных индексов
+  const randomIndexes = [];
+  for (let i = 0; i < 4; i++) {
+    // Получаем 5 индексов
+    randomIndexes.push((seed + i) % allAirdrops.length);
+  }
+
+  // Возвращаем выбранные аирдропы
+  return randomIndexes.map((index) => allAirdrops[index]);
 };

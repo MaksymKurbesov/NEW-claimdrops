@@ -22,7 +22,7 @@ const PricingList = ({ value, setValue, short }) => {
         );
       } else {
         window.open(
-          "https://pay.boomfi.xyz/2p3zMw4NLq4XuBftrcBD7fvuY64",
+          "https://pay.boomfi.xyz/2p3zGz03c9oTyu020zSeMDMarOp",
           "_blank",
         );
       }
@@ -104,7 +104,7 @@ const PricingList = ({ value, setValue, short }) => {
             </ul>
           </Card>
         )}
-        <Card radius={"lg"}>
+        <Card radius={"lg"} className={styles["whale"]}>
           <h2>Whale</h2>
           <p className={styles["price"]}>
             <sup>$</sup>

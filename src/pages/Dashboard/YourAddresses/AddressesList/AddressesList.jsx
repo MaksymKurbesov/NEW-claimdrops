@@ -2,6 +2,7 @@ import styles from "./AddressesList.module.css";
 import MyCopyButton from "../../../../sharedUI/CopyButton/CopyButton.jsx";
 import {
   cutWalletNumber,
+  getAirdrops,
   getRandomInt,
   identifyCryptoWallet,
 } from "../../../../helpers/helpers.js";
@@ -9,9 +10,18 @@ import { Button, Menu } from "@mantine/core";
 import { IconMoodEmptyFilled, IconDotsVertical } from "@tabler/icons-react";
 import { ICON_MAP } from "../Step2/Step2.jsx";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { AIRDROPS } from "../../../Address/Address.jsx";
 
 const AddressesList = ({ addresses }) => {
   const navigate = useNavigate();
+  const [airdropsCount, setAirdropsCount] = useState(0);
+
+  useEffect(() => {
+    getAirdrops(addresses[0], AIRDROPS).then((data) =>
+      setAirdropsCount(data.length),
+    );
+  }, []);
 
   if (addresses.length === 0) {
     return (
@@ -46,7 +56,7 @@ const AddressesList = ({ addresses }) => {
                 </span>
                 <span className={styles["no-airdrop"]}>
                   {/*<span>{getRandomInt(2, 7)} airdrops</span>*/}
-                  <span>0 airdrops</span>
+                  <span>{airdropsCount} airdrops</span>
                 </span>
                 <Button
                   variant={"light"}

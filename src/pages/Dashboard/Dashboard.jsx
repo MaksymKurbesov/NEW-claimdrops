@@ -11,6 +11,7 @@ import { useDisclosure } from "@mantine/hooks";
 import PricingModal from "../../sharedUI/PricingModal/PricingModal.jsx";
 import BannerImage from "../../assets/dashboard-banner.webp";
 import { useTour } from "@reactour/tour";
+import EligibleAirdrops from "./EligibleAirdrops/EligibleAirdrops.jsx";
 
 const Dashboard = () => {
   const [user, loading] = useAuthState(auth);
@@ -19,6 +20,8 @@ const Dashboard = () => {
   const [loadingOverlayIsOpen, setLoadingOverlayIsOpen] = useState(true);
   const { setIsOpen } = useTour();
   const [userFirstLogin, setUserFirstLogin] = useState(false);
+  const [userAddresses, setUserAddresses] = useState([]);
+  const [userAddressesIsLoading, setUserAddressesIsLoading] = useState(true);
 
   useEffect(() => {
     if (!user) return;
@@ -27,12 +30,19 @@ const Dashboard = () => {
       setLoadingOverlayIsOpen(false);
     }, 1500);
 
-    const fetchFirstLogin = async () => {
+    const fetchUserData = async () => {
       const isFirstLogin = await userService.isFirstUserLogin(user.email);
+
+      await userService.subscribeOnWallets(
+        auth.currentUser.email,
+        setUserAddresses,
+      );
+      setUserAddressesIsLoading(false);
+
       setUserFirstLogin(isFirstLogin);
     };
 
-    fetchFirstLogin();
+    fetchUserData();
 
     if (userFirstLogin) {
       setIsOpen(true);
@@ -55,17 +65,6 @@ const Dashboard = () => {
           <p>No subscription</p>
           <Button onClick={open} variant={"light"} color={"#FF9400"}>
             Get Premium
-          </Button>
-          <Button
-            color={"#FF9400"}
-            className={`${styles["connect-wallet-button"]} open`}
-            // onClick={() => setIsOpen(true)}
-            id={"connect-wallet"}
-          >
-            <Badge color={"#ffbd57"} className={styles["button-badge"]}>
-              Exclusive airdrops
-            </Badge>
-            Connect Wallet
           </Button>
         </div>
         <div className={styles["banner"]}>
@@ -100,22 +99,32 @@ const Dashboard = () => {
           />
         </div>
         <h2 className={styles["eligible-airdrops"]}>Eligible Airdrops</h2>
-        <div className={styles["log-in-wrapper"]} id={"eligible-airdrops"}>
-          <LoadingOverlay
-            visible={loadingOverlayIsOpen}
-            zIndex={1000}
-            overlayProps={{ radius: "sm", blur: 2 }}
-          />
-          <span className={styles["icon"]}>
-            <IconRadar2 size={50} color={"rgb(255,204,134)"} />
-          </span>
-          <p>Currently not eligible for Airdrops</p>
-          <span className={styles["log-in-text"]}>
-            If one of your addresses becomes eligible for a future Airdrop, it
-            will be shown here. In the meantime, you can add all your addresses.
-          </span>
-        </div>
-        <YourAddresses openPricingModal={open} />
+        {userAddresses.length ? (
+          <EligibleAirdrops />
+        ) : (
+          <div className={styles["log-in-wrapper"]} id={"eligible-airdrops"}>
+            <LoadingOverlay
+              visible={loadingOverlayIsOpen}
+              zIndex={1000}
+              overlayProps={{ radius: "sm", blur: 2 }}
+            />
+            <span className={styles["icon"]}>
+              <IconRadar2 size={50} color={"rgb(255,204,134)"} />
+            </span>
+            <p>Currently not eligible for Airdrops</p>
+            <span className={styles["log-in-text"]}>
+              If one of your addresses becomes eligible for a future Airdrop, it
+              will be shown here. In the meantime, you can add all your
+              addresses.
+            </span>
+          </div>
+        )}
+
+        <YourAddresses
+          openPricingModal={open}
+          userAddresses={userAddresses}
+          userAddressesIsLoading={userAddressesIsLoading}
+        />
       </div>
       <SponsorCarousel />
       <PricingModal opened={opened} close={close} />

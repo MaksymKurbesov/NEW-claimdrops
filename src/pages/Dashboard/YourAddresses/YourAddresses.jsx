@@ -10,33 +10,17 @@ import Step1 from "./Step1/Step1.jsx";
 import Step2 from "./Step2/Step2.jsx";
 import AddressesList from "./AddressesList/AddressesList.jsx";
 
-const YourAddresses = ({ openPricingModal }) => {
+const YourAddresses = ({
+  openPricingModal,
+  userAddresses,
+  userAddressesIsLoading,
+}) => {
   const [opened, { open, close }] = useDisclosure(false);
   const [step, setStep] = useState(1);
   const [user] = useAuthState(auth);
   const [walletNumber, setWalletNumber] = useState("");
   const [isError, setIsError] = useState("");
   const [visible, { toggle }] = useDisclosure(false);
-  const [visible2, { toggle: toggle2 }] = useDisclosure(false);
-  const [addresses, setAddresses] = useState([]);
-  const [addressIsLoading, setAddressIsLoading] = useState(true);
-
-  useEffect(() => {
-    if (!auth.currentUser) return;
-
-    const fetchAddresses = async () => {
-      toggle2();
-      setAddressIsLoading(true);
-      await userService.subscribeOnWallets(
-        auth.currentUser.email,
-        setAddresses,
-      );
-    };
-
-    fetchAddresses().then(() => {
-      setAddressIsLoading(false);
-    });
-  }, [auth.currentUser]);
 
   const goNextStep = () => {
     const cryptoWallet = isCryptoWallet(walletNumber);
@@ -59,11 +43,11 @@ const YourAddresses = ({ openPricingModal }) => {
     <div className={styles["your-addresses"]} id={"your-addresses"}>
       <div className={styles["header"]}>
         <h2>
-          Your Addresses <span>{addresses.length}</span>
+          Your Addresses <span>{userAddresses.length}</span>
         </h2>
         <Button
           onClick={() => {
-            if (addresses.length) {
+            if (userAddresses.length) {
               openPricingModal();
             } else {
               open();
@@ -80,11 +64,11 @@ const YourAddresses = ({ openPricingModal }) => {
 
       <div className={styles["addresses-list"]}>
         <LoadingOverlay
-          visible={addressIsLoading}
+          visible={userAddressesIsLoading}
           zIndex={1000}
           overlayProps={{ radius: "sm", blur: 2 }}
         />
-        <AddressesList addresses={addresses} />
+        <AddressesList addresses={userAddresses} />
       </div>
 
       <Modal

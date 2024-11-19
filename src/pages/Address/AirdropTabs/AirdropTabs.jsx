@@ -1,7 +1,7 @@
 import styles from "./AirdropTabs.module.css";
 import { Tabs, rem } from "@mantine/core";
 
-const AirdropTabs = ({ children }) => {
+const AirdropTabs = ({ children, count, loading }) => {
   return (
     <div className={styles["tabs"]}>
       <Tabs color={"#FF9400"} defaultValue="gallery">
@@ -9,7 +9,9 @@ const AirdropTabs = ({ children }) => {
           <Tabs.Tab
             value="gallery"
             className={styles["tab"]}
-            rightSection={<p className={styles["count"]}>0</p>}
+            rightSection={
+              <p className={styles["count"]}>{loading ? 0 : count}</p>
+            }
           >
             Eligible Airdrops
           </Tabs.Tab>

@@ -14,6 +14,7 @@ const PricingModal = ({ opened, close }) => {
         opened={opened}
         onClose={close}
         title="Subscribe to Premium"
+        size={"xl"}
       >
         {/* Modal content */}
         <PricingList short setValue={setValue} value={value} />
