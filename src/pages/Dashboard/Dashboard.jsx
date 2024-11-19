@@ -1,6 +1,6 @@
 import styles from "./Dashboard.module.css";
 import { useAuthState } from "../../hooks/userAuthState.js";
-import { auth } from "../../main.jsx";
+import { auth, userService } from "../../main.jsx";
 import SponsorCarousel from "../../sharedUI/SponsorCarousel/Carousel.jsx";
 import { Badge, Button, LoadingOverlay } from "@mantine/core";
 import { IconBrandTelegram, IconRadar2, IconCrown } from "@tabler/icons-react";
@@ -10,18 +10,35 @@ import { useEffect, useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
 import PricingModal from "../../sharedUI/PricingModal/PricingModal.jsx";
 import BannerImage from "../../assets/dashboard-banner.webp";
+import { useTour } from "@reactour/tour";
 
 const Dashboard = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const [opened, { open, close }] = useDisclosure(false);
   const [loadingOverlayIsOpen, setLoadingOverlayIsOpen] = useState(true);
+  const { setIsOpen } = useTour();
+  const [userFirstLogin, setUserFirstLogin] = useState(false);
 
   useEffect(() => {
+    if (!user) return;
+
     setTimeout(() => {
       setLoadingOverlayIsOpen(false);
     }, 1500);
-  }, []);
+
+    const fetchFirstLogin = async () => {
+      const isFirstLogin = await userService.isFirstUserLogin(user.email);
+      setUserFirstLogin(isFirstLogin);
+    };
+
+    fetchFirstLogin();
+
+    if (userFirstLogin) {
+      setIsOpen(true);
+      userService.updateFirstLogin(user.email);
+    }
+  }, [user, userFirstLogin]);
 
   useEffect(() => {
     if (!loading && !user) {
@@ -42,6 +59,8 @@ const Dashboard = () => {
           <Button
             color={"#FF9400"}
             className={`${styles["connect-wallet-button"]} open`}
+            // onClick={() => setIsOpen(true)}
+            id={"connect-wallet"}
           >
             <Badge color={"#ffbd57"} className={styles["button-badge"]}>
               Exclusive airdrops
@@ -81,7 +100,7 @@ const Dashboard = () => {
           />
         </div>
         <h2 className={styles["eligible-airdrops"]}>Eligible Airdrops</h2>
-        <div className={styles["log-in-wrapper"]}>
+        <div className={styles["log-in-wrapper"]} id={"eligible-airdrops"}>
           <LoadingOverlay
             visible={loadingOverlayIsOpen}
             zIndex={1000}

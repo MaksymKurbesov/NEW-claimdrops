@@ -66,3 +66,12 @@ ul, ol {
 .__m__-rb {
     --carousel-slide-size: 100vw !important;
 }
+
+#step1 p {
+    font-size: 20px;
+}
+
+#step1 ul li {
+    font-size: 14px;
+    opacity: 0.6;
+}

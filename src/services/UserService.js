@@ -28,6 +28,26 @@ export default class UserService {
     return userDoc.data().refCode;
   }
 
+  async updateFirstLogin(email) {
+    const userRef = doc(db, "users", email);
+    const userDoc = await getDoc(userRef);
+
+    if (!userDoc.exists()) return;
+
+    await updateDoc(doc(db, "users", email), {
+      firstLogin: false,
+    });
+  }
+
+  async isFirstUserLogin(email) {
+    const userRef = doc(db, "users", email);
+    const userDoc = await getDoc(userRef);
+
+    if (!userDoc.exists()) return;
+
+    return userDoc.data().firstLogin;
+  }
+
   async subscribeOnWallets(email, callback) {
     const userRef = doc(db, "users", email);
 

@@ -56,7 +56,7 @@ const YourAddresses = ({ openPricingModal }) => {
   };
 
   return (
-    <div className={styles["your-addresses"]}>
+    <div className={styles["your-addresses"]} id={"your-addresses"}>
       <div className={styles["header"]}>
         <h2>
           Your Addresses <span>{addresses.length}</span>
