@@ -45,7 +45,8 @@ const AddressesList = ({ addresses }) => {
                   {identifyCryptoWallet(address)}
                 </span>
                 <span className={styles["no-airdrop"]}>
-                  <span>{getRandomInt(2, 7)} airdrops</span>
+                  {/*<span>{getRandomInt(2, 7)} airdrops</span>*/}
+                  <span>0 airdrops</span>
                 </span>
                 <Button
                   variant={"light"}
