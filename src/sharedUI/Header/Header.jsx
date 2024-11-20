@@ -1,7 +1,7 @@
 import styles from "./Header.module.css";
 import Logo from "../../assets/logo.webp";
 import Logo2 from "../../assets/logo2.webp";
-import { Button, Flex } from "@mantine/core";
+import { Anchor, Button, Flex } from "@mantine/core";
 import { IconLogout, IconUserFilled, IconLogin2 } from "@tabler/icons-react";
 import useWindowSize from "../../hooks/useWindowSize";
 import { useEffect, useState } from "react";
@@ -78,13 +78,13 @@ const Header = ({ user }) => {
         </nav>
         {user ? (
           <>
-            <Button
-              // leftSection={<IconUserFilled size={18} />}
+            <Anchor
               color="rgba(255, 255, 255, 1)"
               variant="subtle"
               radius="md"
               className={styles["log-in-button"]}
-              onClick={() => navigate("/dashboard/overview")}
+              href={"/dashboard/overview"}
+              // onClick={() => navigate("/dashboard/overview")}
             >
               {windowSize.width <= 600 ? (
                 <IconUserFilled size={18} />
@@ -94,8 +94,7 @@ const Header = ({ user }) => {
                   <span className={styles["dashboard-text"]}>Dashboard</span>
                 </>
               )}
-              {/*Dashboard*/}
-            </Button>
+            </Anchor>
             {!isIndexPage && (
               <Button
                 onClick={() => authService.logout()}

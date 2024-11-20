@@ -29,6 +29,10 @@ export const auth = getAuth(firebaseApp);
 export const authService = new AuthService();
 export const userService = new UserService();
 
+window.addEventListener("beforeunload", function (event) {
+  event.stopImmediatePropagation();
+});
+
 const steps = [
   {
     selector: "#join-chat",

@@ -41,7 +41,11 @@
 }
 
 .log-in-button {
+    display: flex;
+    align-items: center;
+    color: white;
     margin-left: auto;
+    margin-right: 10px;
 }
 
 .dashboard-text {

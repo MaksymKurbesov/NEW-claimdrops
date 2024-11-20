@@ -43,6 +43,7 @@ const Hero = () => {
               setWalletNumber(e.target.value);
               setIsError(false);
             }}
+            value={walletNumber}
           />
           {isError && (
             <p className={styles["error-message"]}>

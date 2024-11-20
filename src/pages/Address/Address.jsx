@@ -7,7 +7,7 @@ import {
   IconDotsVertical,
   IconChevronRight,
 } from "@tabler/icons-react";
-import { Button, LoadingOverlay, Menu, Overlay } from "@mantine/core";
+import { Anchor, Button, LoadingOverlay, Menu, Overlay } from "@mantine/core";
 import AirdropTabs from "./AirdropTabs/AirdropTabs.jsx";
 import {
   Link,
@@ -298,25 +298,27 @@ const Address = () => {
                   <p className={styles["airdrop-name"]}>{airdrop.name}</p>
                   {airdrop.status}
                   {airdrop.price}
-                  <Button
-                    color={"#FF9400"}
-                    size={"xs"}
-                    onClick={() => {
-                      if (user) {
-                        navigate("/dashboard/overview");
-                      } else {
-                        updateIsVisible();
-                      }
-                    }}
-                  >
-                    {windowSize.width <= 550 ? (
-                      "Claim"
-                    ) : (
-                      <>
-                        Claim safely <IconChevronRight size={16} />
-                      </>
-                    )}
-                  </Button>
+                  <Anchor href={"/dashboard/overview"}>
+                    <Button
+                      color={"#FF9400"}
+                      size={"xs"}
+                      onClick={() => {
+                        if (user) {
+                          navigate("/dashboard/overview");
+                        } else {
+                          updateIsVisible();
+                        }
+                      }}
+                    >
+                      {windowSize.width <= 550 ? (
+                        "Claim"
+                      ) : (
+                        <>
+                          Claim safely <IconChevronRight size={16} />
+                        </>
+                      )}
+                    </Button>
+                  </Anchor>
                 </li>
               );
             })}
