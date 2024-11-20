@@ -57,7 +57,7 @@ export default class UserService {
         const wallets = doc.data().wallets;
         callback(wallets); // Call the callback with updated wallet data
       } else {
-        callback(null); // Handle the case where the document does not exist
+        callback([]); // Handle the case where the document does not exist
       }
     });
 

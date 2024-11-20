@@ -46,7 +46,7 @@ const Dashboard = () => {
 
     if (userFirstLogin) {
       setIsOpen(true);
-      // userService.updateFirstLogin(user.email);
+      userService.updateFirstLogin(user.email);
     }
   }, [user, userFirstLogin]);
 

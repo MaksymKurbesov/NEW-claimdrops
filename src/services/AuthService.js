@@ -19,6 +19,8 @@ export default class AuthService {
       await setDoc(doc(db, "users", email), {
         email: trimmedEmail,
         refCode: generateCode(),
+        firstTime: true,
+        wallets: [],
       });
     } catch (err) {
       console.error(err);

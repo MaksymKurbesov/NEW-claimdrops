@@ -267,17 +267,17 @@ const Address = () => {
         <h2>Address Airdrops</h2>
         <AirdropTabs count={airdrops.length} loading={isOpenLoadOverlay}>
           <ul className={styles["airdrops-list"]}>
-            {/*<LoadingOverlay*/}
-            {/*  visible={isOpenLoadOverlay}*/}
-            {/*  zIndex={1000}*/}
-            {/*  overlayProps={{*/}
-            {/*    radius: "md",*/}
-            {/*    blur: 2,*/}
-            {/*  }}*/}
-            {/*/>*/}
-            {/*{isOpenLoadOverlay && (*/}
-            {/*  <Overlay color="#fff" backgroundOpacity={1} />*/}
-            {/*)}*/}
+            <LoadingOverlay
+              visible={isOpenLoadOverlay}
+              zIndex={1000}
+              overlayProps={{
+                radius: "md",
+                blur: 2,
+              }}
+            />
+            {isOpenLoadOverlay && (
+              <Overlay color="#fff" backgroundOpacity={1} />
+            )}
             {airdrops.map((airdrop, index) => {
               return (
                 <li key={index}>

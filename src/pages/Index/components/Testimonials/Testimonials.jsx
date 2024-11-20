@@ -3,6 +3,18 @@ import { Avatar } from "@mantine/core";
 import TwitterBlueIcon from "../../../../assets/twitter-blue.svg";
 import useWindowSize from "../../../../hooks/useWindowSize.js";
 import MobileFeedbacks from "./MobileFeedbacks.jsx";
+import AvatarDefi from "../../../../assets/avatars/defidad.jpg";
+import AvatarTobi from "../../../../assets/avatars/tobi.png";
+import AvatarTochi from "../../../../assets/avatars/oxtochi.jpg";
+import AvatarHottie from "../../../../assets/avatars/hottiebabegem.jpg";
+import AvatarDrake from "../../../../assets/avatars/drake.jpg";
+import AvatarCrypto from "../../../../assets/avatars/cryptoanon.jpg";
+import AvatarMartin from "../../../../assets/avatars/martin.jpg";
+import AvatarWilliyam from "../../../../assets/avatars/william.jpg";
+import AvatarLeonard from "../../../../assets/avatars/leonard.jpg";
+import AvatarSlhksm from "../../../../assets/avatars/salih.jpg";
+import AvatarKamil from "../../../../assets/avatars/jacek.jpg";
+import AvatarMatevz from "../../../../assets/avatars/matevz.jpg";
 
 export const FEEDBACKS = [
   {
@@ -14,6 +26,7 @@ export const FEEDBACKS = [
     ),
     name: "DeFi Dad",
     nickname: "@DeFi_Dad",
+    icon: AvatarDefi,
   },
   {
     text: (
@@ -21,6 +34,7 @@ export const FEEDBACKS = [
     ),
     name: "tobi",
     nickname: "@Tobific",
+    icon: AvatarTobi,
   },
   {
     text: (
@@ -31,6 +45,7 @@ export const FEEDBACKS = [
     ),
     name: "OxTøchi 🦇🔈",
     nickname: "@OxTochi",
+    icon: AvatarTochi,
   },
   {
     text: (
@@ -41,6 +56,7 @@ export const FEEDBACKS = [
     ),
     name: "hottiebabegem",
     nickname: "@HottieBabeGem",
+    icon: AvatarHottie,
   },
   {
     text: (
@@ -50,8 +66,9 @@ export const FEEDBACKS = [
         opportunities!"
       </p>
     ),
-    name: "DeFi Dad",
-    nickname: "@DeFi_Dad",
+    name: "Drake on Digital",
+    nickname: "@drakeondigital",
+    icon: AvatarDrake,
   },
   {
     text: (
@@ -61,8 +78,9 @@ export const FEEDBACKS = [
         <span>@DropScannerAlertsBot</span>? Highly recommended!"
       </p>
     ),
-    name: "tobi",
-    nickname: "@Tobific",
+    name: "Crypto Johnonymous⌘",
+    nickname: "@Crypto_Anon_",
+    icon: AvatarCrypto,
   },
   {
     text: (
@@ -71,8 +89,9 @@ export const FEEDBACKS = [
         didn’t even know I could claim!"
       </p>
     ),
-    name: "OxTøchi 🦇🔈",
-    nickname: "@OxTochi",
+    name: "Martin U",
+    nickname: "@MartinU00849412",
+    icon: AvatarMartin,
   },
   {
     text: (
@@ -81,8 +100,9 @@ export const FEEDBACKS = [
         Thanks for your work!"
       </p>
     ),
-    name: "hottiebabegem",
-    nickname: "@HottieBabeGem",
+    name: "WillyamPangestu 🦇🔊",
+    nickname: "@WillyamPangestu",
+    icon: AvatarWilliyam,
   },
   {
     text: (
@@ -92,8 +112,9 @@ export const FEEDBACKS = [
         <span>$558</span>. Great tool!"
       </p>
     ),
-    name: "DeFi Dad",
-    nickname: "@DeFi_Dad",
+    name: "Leonard V",
+    nickname: "@0xLeonardV",
+    icon: AvatarLeonard,
   },
   {
     text: (
@@ -103,8 +124,9 @@ export const FEEDBACKS = [
         in crypto."
       </p>
     ),
-    name: "tobi",
-    nickname: "@Tobific",
+    name: "slhksm",
+    nickname: "@SalihKasm4",
+    icon: AvatarSlhksm,
   },
   {
     text: (
@@ -114,8 +136,9 @@ export const FEEDBACKS = [
         time."
       </p>
     ),
-    name: "OxTøchi 🦇🔈",
-    nickname: "@OxTochi",
+    name: "Kamil Jaszczur",
+    nickname: "@Jacekpietrza",
+    icon: AvatarKamil,
   },
   {
     text: (
@@ -125,8 +148,9 @@ export const FEEDBACKS = [
         <span>@DropScannerAlertsBot</span>!"
       </p>
     ),
-    name: "hottiebabegem",
-    nickname: "@HottieBabeGem",
+    name: "Matevž Šubic.base.eth",
+    nickname: "@MatevzSubic",
+    icon: AvatarMatevz,
   },
 ];
 
@@ -152,7 +176,7 @@ const Testimonials = () => {
               <li key={index}>
                 <p className={styles["feedback-text"]}>{feedback.text}</p>
                 <div className={styles["profile"]}>
-                  <Avatar radius="xl" />
+                  <Avatar src={feedback.icon} radius="xl" />
                   <div>
                     <p>
                       {feedback.name}
