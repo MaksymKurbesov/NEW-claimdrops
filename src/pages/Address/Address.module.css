@@ -83,19 +83,6 @@
     font-weight: 700;
 }
 
-/*.airdrop-timeleft {*/
-/*    font-size: 12px;*/
-/*    text-align: center;*/
-
-/*}*/
-
-/*.airdrop-timeleft span {*/
-/*    background: rgba(123, 255, 0, 0.34);*/
-/*    padding: 4px 10px;*/
-/*    border-radius: 10px;*/
-/*    color: #35792e;*/
-/*}*/
-
 .airdrop-status {
     display: flex;
     flex-direction: column;
@@ -172,5 +159,52 @@
 
     .address h2 {
         margin-bottom: 5px;
+    }
+
+
+    .airdrops-list {
+        gap: 15px;
+    }
+
+    .airdrops-list li {
+        grid-template-columns: 10px 30px 60px 1fr 70px 1fr;
+        gap: 7px;
+        padding-bottom: 20px;
+    }
+
+    .airdrops-list li > svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .airdrops-list li img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .airdrop-name {
+        font-size: 14px;
+    }
+
+    .airdrop-status {
+        font-size: 10px;
+        gap: 3px;
+    }
+
+    .airdrop-status span {
+        padding: 4px 8px;
+    }
+
+    .airdrop-price {
+        font-size: 14px;
+    }
+
+    .airdrop-price span {
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    .airdrop-list li button {
+        padding: 0 !important;
     }
 }

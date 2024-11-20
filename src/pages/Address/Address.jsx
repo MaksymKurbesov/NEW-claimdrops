@@ -40,6 +40,7 @@ import BlastImage from "../../assets/airdrops-network/blast.png";
 import Layer3Image from "../../assets/airdrops-network/layer3.png";
 import ZoraImage from "../../assets/airdrops-network/zora.png";
 import AptosImage from "../../assets/airdrops-network/aptos.png";
+import useWindowSize from "../../hooks/useWindowSize.js";
 
 export const AIRDROPS = [
   {
@@ -191,6 +192,7 @@ const Address = () => {
   const [opened, { open, close }] = useDisclosure(false);
   const [airdrops, setAirdrops] = useState([]);
   const navigate = useNavigate();
+  const windowSize = useWindowSize();
 
   const [isOpenLoadOverlay, setIsOpenLoadOverlay] = useState(true);
   const { isVisible, updateIsVisible } = useSignInModal();
@@ -265,17 +267,17 @@ const Address = () => {
         <h2>Address Airdrops</h2>
         <AirdropTabs count={airdrops.length} loading={isOpenLoadOverlay}>
           <ul className={styles["airdrops-list"]}>
-            <LoadingOverlay
-              visible={isOpenLoadOverlay}
-              zIndex={1000}
-              overlayProps={{
-                radius: "md",
-                blur: 2,
-              }}
-            />
-            {isOpenLoadOverlay && (
-              <Overlay color="#fff" backgroundOpacity={1} />
-            )}
+            {/*<LoadingOverlay*/}
+            {/*  visible={isOpenLoadOverlay}*/}
+            {/*  zIndex={1000}*/}
+            {/*  overlayProps={{*/}
+            {/*    radius: "md",*/}
+            {/*    blur: 2,*/}
+            {/*  }}*/}
+            {/*/>*/}
+            {/*{isOpenLoadOverlay && (*/}
+            {/*  <Overlay color="#fff" backgroundOpacity={1} />*/}
+            {/*)}*/}
             {airdrops.map((airdrop, index) => {
               return (
                 <li key={index}>
@@ -307,8 +309,13 @@ const Address = () => {
                       }
                     }}
                   >
-                    Claim safely
-                    <IconChevronRight size={16} />
+                    {windowSize.width <= 550 ? (
+                      "Claim"
+                    ) : (
+                      <>
+                        Claim safely <IconChevronRight size={16} />
+                      </>
+                    )}
                   </Button>
                 </li>
               );
