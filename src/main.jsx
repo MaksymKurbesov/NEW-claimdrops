@@ -13,7 +13,6 @@ import UserService from "./services/UserService.js";
 import { SignInModalProvider } from "./context/SignInModalContext.jsx";
 import { TourProvider } from "@reactour/tour";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import "./673c64e375f7d1a3f73313d4.js";
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyDsPkfeWIwnG42xreJQ78cGi0RQ8OS4uew",
